@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-size: 15px;
+}
+
+// ------------------------BREACKPOINTS__________
+$tablette_1200 : 1200px;
+$tablette_900 : 900px;
+$tablette_700 : 700px;
+$mobile_600 : 600px;
+$mobile_500 : 500px;
+$mobile_400 : 400px;
+
+@mixin mQry($breackpoint) {
+    @media screen and (max-width:$breackpoint) {
+        @content;
+    }
+}
+
+@mixin centerBtwn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin centerStart {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@mixin centerEnd {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@mixin centerCtr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
