@@ -1,0 +1,110 @@
+//scss of redundant element on the web site
+
+$transition: .2s;
+$btn_color_background: rgba(240, 146, 145, 1);
+
+//the red button
+.generic-btn {
+    width: 100%;
+    color: #000;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    background-color: $btn_color_background;
+    border-radius: 10px;
+    position: relative;
+    transition: $transition;
+    cursor: pointer;
+
+    @include minmQry($tablette_700) {
+        max-width: 250px;
+    }
+
+    span {
+        position: relative;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+
+        .text {
+            position: relative;
+            z-index: 1;
+        }
+
+        &::before {
+            content: '';
+            width: 0px;
+            height: 0px;
+            background-color: $primary-color;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: -1;
+            transition: .3s;
+        }
+    }
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-radius: 11px;
+        background-color: transparent;
+        border: 1px solid $btn_color_background;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: $transition;
+        display: none;
+
+        @include minmQry($tablette_700) {
+            display: block;
+        }
+    }
+
+    &:hover {
+        color: #FFF;
+
+        &::after {
+            transform: translate(-50%, -50%) scale(1.3);
+            opacity: 0;
+            border-color: $primary-color;
+        }
+
+        span {
+            &::before {
+                width: 100px;
+                height: 100px;
+                background-color: $primary-color;
+                transform: translate(-50%, -50%) scale(20);
+            }
+        }
+    }
+}
+
+//Title on section banner
+.generic-title {
+    width: 100%;
+    text-align: start;
+    color: $primary_color--dark;
+    font-weight: 500;
+    font-size: 1.5em;
+
+    @include minmQry($tablette_700) {
+        font-size: 2.1em;
+    }
+}
+
+//Bold text on section banner
+.generoc-stronger-texte {
+    font-weight: bold;
+}

@@ -1,3 +1,5 @@
+//this gulp file is only for developpement part
+
 var gulp = require('gulp'),
     sass = require('gulp-sass')(require('sass'))
     uglify = require('gulp-uglify'),
@@ -8,8 +10,7 @@ var gulp = require('gulp'),
     cleanCSS = require('gulp-clean-css');
     replace = require('gulp-replace');
     del = require('del');
-browserSync = require('browser-sync').create();
-
+    browserSync = require('browser-sync').create();
 
 const options = require("./package.json").options;
 
@@ -56,19 +57,14 @@ gulp.task('sass', () => {
 
 });
 
-gulp.task('compressDepsAngular', () => {
-    return gulp.src(['assets/js/angular/modules/*.js'])
-        .pipe(concat('angular-dependancies.js'))
-        .pipe(gulp.dest('assets/js/angular/'))
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('assets/js/angular/'));
-});
-
+// Compile all JS files and minify it in 1 JS file
 gulp.task('compress', () => {
     return gulp.src(
         [
-            'assets/js/jquery.min.js',
+            'assets/js/jquery-3.7.0.min.js',
+            'assets/js/gsap/minified/ScrollTrigger.min.js',
+            'assets/js/gsap/minified/gsap.min.js',
+            'assets/js/index.js',
         ]
     )
         .pipe(concat('main.js'))
@@ -78,28 +74,8 @@ gulp.task('compress', () => {
         .pipe(gulp.dest('assets/js/main-js/'));
 });
 
-gulp.task('deploy',  () =>
-{
-    newName    = new Date().getTime() + '.js';
-    newNameCss = new Date().getTime() + '.css';
-    getEnv     = arg.env || 'prod';
 
-    console.log("ici getEnv =>", getEnv);
-    return (
-        gulp.src(['assets/js/angular/BACKOFFICE.js'])
-            .pipe(rename(newName))
-            .pipe(replace(options.links_back.dev, options.links_back[getEnv]))
-            .pipe(gulp.dest('assets/js/angular/'))
-        && gulp.src(['assets/css/base.min.css'])
-            .pipe(rename(newNameCss))
-            .pipe(gulp.dest('assets/css/'))
-        && gulp.src(['*.html'], {base: "./"})
-            .pipe(replace('assets/css/base.min.css', 'assets/css/'+newNameCss))
-            .pipe(replace('assets/js/angular/BACKOFFICE.js', 'assets/js/angular/'+newName))
-            .pipe(gulp.dest("./"))
-    )
-});
-
+//Watch any changes on scss, HTML or JS file ans make a reload of browser
 gulp.task('watch', function(){
     browserSync.init({
         proxy: "http://localhost/" + options.links_front.dev,
@@ -110,15 +86,13 @@ gulp.task('watch', function(){
 
     gulp.watch(['*.html','partials/*.html', 'assets/js/*.js', 'assets/css/*.css', 'assets/css/sass/*.scss', 'assets/css/sass/components/*.scss']).on('change', browserSync.reload);
 
-    gulp.watch('assets/js/angular/*.js', gulp.series('compressDepsAngular'));
-
     gulp.watch(['assets/js/*.js'], gulp.series('compress'));
 
-    gulp.watch(['assets/js/*.js', 'assets/js/**/*.js', 'assets/js/angular-dependancies/*.js']).on('change', browserSync.reload);
+    gulp.watch(['assets/js/*.js', 'assets/js/**/*.js']).on('change', browserSync.reload);
 
 });
 
-// permet de demarer le gulp par default
-gulp.task('default', gulp.series('sass','compressDepsAngular','compress','watch'));
+
+gulp.task('default', gulp.series('sass','compress','watch'));
 
 

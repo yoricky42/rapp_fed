@@ -1,0 +1,301 @@
+//scss of index page style
+
+@keyframes waviy {
+
+    0%,
+    40%,
+    100% {
+        transform: translateY(0)
+    }
+
+    20% {
+        transform: translateY(-20px)
+    }
+}
+
+.banner-section {
+    margin-top: 60px;
+
+    @include minmQry(0) {
+        .banner-section__header {
+            height: calc(100vh - 60px);
+            position: relative;
+
+            .img_desktop {
+                display: none;
+            }
+
+            .img_mobile,
+            .img_desktop {
+                width: 100%;
+                height: calc(100vh - 60px);
+                object-fit: cover;
+            }
+        }
+
+        .banner-section__header__message {
+            position: absolute;
+            bottom: 2em;
+            width: 80%;
+            max-width: 290px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &>*+* {
+                margin-top: 1em;
+            }
+
+            .text-message {
+                background-color: rgba(58, 58, 60, 0.38);
+                box-shadow: 0 3px 10px #0000004a inset;
+                padding: 1em;
+                border-radius: 10px;
+                color: #fff;
+
+                .title {
+                    font-size: 2em;
+                    font-weight: 400;
+                    margin-bottom: .5em;
+                }
+            }
+        }
+
+        $space-between-element: 25px;
+
+        .banner-section__banner-container {
+            max-width: 1780px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            color: $text_color;
+
+            &>*+* {
+                margin-top: $space-between-element;
+            }
+
+            .image {
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: 3s;
+
+                    &:hover {
+                        transform: scale(1.1)
+                    }
+                }
+
+                .img_desktop {
+                    display: none;
+                }
+            }
+
+            .texte {
+                @include border;
+
+                &>* {
+                    margin-bottom: $space-between-element;
+                }
+
+                .listing {
+                    &>* {
+                        margin-bottom: $space-between-element;
+                    }
+
+                    li {
+                        @include centerStart;
+                        align-items: flex-start;
+
+                        .letter {
+                            font-weight: bold;
+                            display: inline-block;
+                            text-transform: uppercase;
+                            margin-right: 5px;
+                            font-size: 1.1em;
+                            color: $primary_color--dark;
+                        }
+                    }
+
+                }
+
+                .slogant {
+                    font-weight: bold;
+                    color: $primary_color--dark;
+
+                    .anim-letter{
+                        display: inline-block;
+                    }
+                }
+            }
+
+            &:first-of-type {
+                padding: 1em 0;
+                @include border;
+
+                .texte {
+                    padding: 0;
+                }
+
+                .generic-title {
+                    text-align: center;
+                }
+
+            }
+        }
+    }
+
+    @include minmQry($mobile_500) {
+        .banner-section__header {
+            .img_desktop {
+                display: block;
+            }
+
+            .img_mobile {
+                display: none;
+            }
+        }
+
+        .banner-section__banner-container {
+            .texte {
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+
+    @include minmQry($tablette_700) {
+        .banner-section__header {
+            .banner-section__header__message {
+                position: absolute;
+                bottom: 7em;
+                width: 80%;
+                max-width: 290px;
+                left: initial;
+                right: 7em;
+                transform: initial;
+            }
+        }
+
+        .banner-section__banner-container {
+            max-height: 90vh;
+            flex-direction: row;
+            align-items: stretch;
+            padding: 0 !important;
+
+            &:nth-child(3) {
+                flex-direction: row-reverse;
+            }
+
+            .image {
+                height: auto;
+                width: 50%;
+
+                img {
+                    object-fit: cover;
+                }
+
+                .img_desktop {
+                    display: block;
+                }
+
+                .img_mobile {
+                    display: none;
+                }
+            }
+
+            .texte {
+                width: 50%;
+                max-width: 450px;
+                margin-top: 0;
+                padding: 2em !important;
+                margin: auto;
+                font-size: 18px;
+                line-height: 1.5;
+
+            }
+        }
+    }
+}
+
+.question-section {
+    @include minmQry(0) {
+        max-width: 700px;
+        margin: auto;
+        @include border;
+
+        #question-spoiler {
+            max-width: 500px;
+            margin: auto;
+            margin-bottom: 4em;
+
+            &>*+* {
+                margin-top: 3em;
+            }
+        }
+
+        .generic-title {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        .question-section__spoiler {
+            color: $primary_color--dark;
+
+            .question-section__spoiler--que {
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                font-size: 1.2em;
+
+                #active_spoiler {
+                    margin-left: 1em;
+                    min-width: 20px;
+                    min-height: 20px;
+                    display: block;
+                    transform: rotate(-180deg);
+                    transition: $transition;
+                    cursor: pointer;
+                }
+
+                ::after {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background-color: $light_grey_color;
+                    display: block;
+                    position: absolute;
+                    bottom: -1em;
+                }
+            }
+
+            .question-section__spoiler--res {
+                color: $text_color;
+                height: 0;
+                padding: 0 .5em;
+                overflow: hidden;
+                transition: $transition;
+            }
+
+
+            &.question-section__spoiler--active {
+                .question-section__spoiler--que {
+                    svg {
+                        transform: rotate(0deg);
+                    }
+                }
+
+                .question-section__spoiler--res {
+                    padding: 0em .5em;
+                    padding-top: 3em;
+                    height: max-content;
+                    max-height: 300px;
+                    overflow: auto;
+                }
+            }
+        }
+    }
+}

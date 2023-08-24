@@ -1,0 +1,268 @@
+//scss of navbar style
+
+:root {
+    --toggler-size: 20px;
+}
+
+#header_navbar_height {
+    min-height: 60px;
+    padding: .5em;
+}
+
+.navbar {
+    background-color: $primary_color;
+    position: relative;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    @extend #header_navbar_height;
+    @include centerBtwn; // add displat flex properties with justify-content: between
+    @include border;
+
+
+    //_________________BURGER MENU STYLE____________
+
+    .menu-toggler {
+        display: block;
+        width: var(--toggler-size);
+        height: var(--toggler-size);
+        position: relative;
+        cursor: pointer;
+        display: none;
+
+        @include maxmQry($tablette_1000) {
+            display: block;
+        }
+
+        .menu-toggler__line {
+            height: calc(var(--toggler-size) / 10);
+            background: #FFF;
+            position: absolute;
+            left: 0;
+            right: 0;
+            transition-property: transform, opacity;
+            transition-duration: .5s, .25s;
+        }
+    
+        .menu-toggler__line:nth-child(2) {
+            top: calc(var(--toggler-size) / 5 * 2);
+        }
+    
+        .menu-toggler__line:nth-child(3) {
+            top: calc(var(--toggler-size) / 5 * 4);
+        }
+    
+    }
+
+    //_________________LOGO STYLE____________
+
+    .logo-container {
+        @include minmQry(0) {
+            width: 100%;
+            @include centerCtr;
+        }
+
+        @include minmQry($tablette_1000) {
+            width: max-content;
+            position: relative;
+        }
+    }
+
+    //_________________CONTAINER OF NAVBAR LINKS____________
+
+    .navbar-links {
+        position: relative;
+        display: flex;
+
+        .header-navbar {
+            @extend .forgrounder;
+            @include centerBtwn;
+            @extend #header_navbar_height;
+            border-bottom: 1px solid #FFF;
+
+            .close-btn {
+                color: #fff;
+                font-weight: 300;
+                font-size: 2em;
+                height: 1em;
+                width: 1em;
+                display: flex;
+                align-items: end;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+
+        @include minmQry(0) { // mobile responsive
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+
+            .overlay {
+                content: '';
+                top: 0;
+                left:0;
+                right: 0;
+                background-color: #000;
+                position: fixed;
+                height: 100%;
+                opacity: 0;
+                z-index: 0;
+                transform: translateX(-100%);
+
+                &.overlay__one{
+                    background-color: #FFF;
+                }
+                &.overlay__two{
+                    background-color: $primary_color;
+                }
+            }
+
+            .navbar-links__container {
+                display: flex;
+
+                a {
+                    display: block;
+                }
+            }
+
+            .forgrounder {
+                position: relative;
+                background-color: $primary_color;
+                z-index: 1;
+            }
+
+            #links_on_navbar_style {
+                color: #FFF;
+                padding: 1em;
+                width: 100%;
+                transition: .3s;
+                font-size: 1em;
+                text-transform: uppercase;
+
+                &.faq span {
+                    text-transform: lowercase !important;
+                }
+
+                &:hover {
+                    background-color: #FFF;
+                    color: $primary_color
+                }
+            }
+
+            .navbar-links__container {
+                @extend .forgrounder;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+
+                @include minmQry(0) {
+                    padding-top: .5em;
+                }
+
+                a {
+                    @extend #links_on_navbar_style;
+                }
+            }
+
+            .navbar-links__sign-btn {
+                @extend .forgrounder;
+                background-color: #FFF;
+                text-align: center;
+                color: $primary_color ;
+                height: 50px;
+                line-height: 50px;
+                text-transform: uppercase;
+
+                span {
+                    text-transform: lowercase;
+                }
+            }
+        }
+
+        @include minmQry($mobile_600) { // to 600px
+            width: 70%;
+        }
+
+        @include minmQry($tablette_1000) { // desktop
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            align-items: center;
+
+            .overlay {
+                display: none;
+            }
+
+            .header-navbar {
+                display: none;
+            }
+
+            .navbar-links__container {
+                flex-direction: row;
+                justify-content: center;
+                height: 100%;
+                padding: 0;
+
+                &>*+* {
+                    margin-left: 2em;
+                }
+
+                a {
+                    padding: 0;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        width: 0;
+                        height: 1px;
+                        background-color: #FFF;
+                        position: absolute;
+                        bottom: -5px;
+                        left: 0;
+                        transition: .3s;
+                    }
+
+                    &:hover {
+                        background: transparent;
+                        color: #FFF;
+
+                        &::after {
+                            width: 100%;
+                        }
+                    }
+
+                }
+            }
+
+            .navbar-links__sign-btn {
+                background-color: transparent;
+                color: #FFF;
+                min-width: max-content;
+                padding: .5em;
+                height: max-content;
+                line-height: 1;
+                transition: .3s;
+
+                &:hover {
+                    background: #FFF;
+                    color: $primary_color;
+
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+
+    }
+}

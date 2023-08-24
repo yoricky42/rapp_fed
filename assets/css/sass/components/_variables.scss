@@ -1,0 +1,113 @@
+
+
+@font-face {
+  font-family: "markOT";
+  src: url("../fonts/MarkOT-Thin.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "markOT";
+  src: url("../fonts/MarkOT-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "markOT";
+  src: url("../fonts/MarkOT-Bold.otf") format("opentype");
+  font-weight: bold; 
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "markOT";
+  src: url("../fonts/MarkOT-Book.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-size: 15px;
+  font-family: "markOT", sans-serif;
+}
+
+
+
+// ______________REACKPOINTS__________
+
+$tablette_1200 : 1200px;
+$tablette_1000 : 1000px;
+$tablette_900 : 900px;
+$tablette_700 : 700px;
+$mobile_600 : 600px;
+$mobile_500 : 500px;
+$mobile_400 : 400px;
+
+// ______________COLORS__________
+
+$primary_color: #85c5b9;
+$primary_color--dark:#47929c;;
+$text_color: #535353;
+$primary_color_btn: #f09291;
+$light_grey_color: #c4c4c4;
+
+// ________MIXIN : TO OVOID REPETITION________
+
+@mixin maxmQry($breackpoint) {
+  @media screen and (max-width:$breackpoint) {
+    @content;
+  }
+}
+
+@mixin minmQry($breackpoint) {
+  @media screen and (min-width:$breackpoint) {
+    @content;
+  }
+}
+
+@mixin centerBtwn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin centerStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin centerEnd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin centerCtr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin border() {
+
+  @include minmQry(0){
+    padding-left: 1em;
+    padding-right:1em ;
+  }
+  @include minmQry(1400px){
+    padding-left: 4em;
+    padding-right:4em ;
+  }
+}

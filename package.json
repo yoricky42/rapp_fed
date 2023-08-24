@@ -1,5 +1,5 @@
 {
-  "name": "gmg_front",
+  "name": "rapp_test",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -7,19 +7,11 @@
     "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "yorickyves42",
   "license": "ISC",
-  "homepage": "https://gitlab.com/guindytechnology1/yogivida_front#readme",
   "options": {
-    "links_back": {
-      "dev": "gmg/public",
-      "prod": "gmg_back",
-      "test": "gmg_back_test"
-    },
     "links_front": {
-      "dev": "gmg_front/",
-      "prod": "/",
-      "test": "/gmg_front_test/"
+      "dev": "rapp_test/"
     },
     "port": 8000,
     "assetDirectory": "assets"

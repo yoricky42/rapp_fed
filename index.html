@@ -1,12 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/base.min.css">
+    <title>Lumi - by Pampers</title>
 </head>
+
 <body>
-    <H1>Hello, world</H1>
+    <nav class="navbar">
+        <label for="menuToggler" class="menu-toggler">
+            <span class="menu-toggler__line"></span>
+            <span class="menu-toggler__line"></span>
+            <span class="menu-toggler__line"></span>
+        </label>
+        <a href="" class="logo-container">
+            <img src="./assets/images/Icons/Logo.svg" alt="" class="navbar-logo">
+        </a>
+        <div class="navbar-links">
+            <div class="header-navbar">
+                <img src="./assets/images/Icons/Logo.svg" alt="" class="navbar-logo">
+                <span class="close-btn">x</span>
+            </div>
+            <ul class="navbar-links__container">
+                <li><a href="#" class="">Smart sleep coach</a></li>
+                <li><a href="#" class="">Upgrade to pro</a></li>
+                <li><a href="#" class="">Sleep plans</a></li>
+                <li><a href="#" class="">Review</a></li>
+                <li><a href="#" class="faq">FAQ<span>s</span></a></li>
+            </ul>
+            <a href="" class="navbar-links__sign-btn">
+                Sign in <span>or</span> register
+            </a>
+            <div class="overlay overlay__one"></div>
+            <div class="overlay overlay__two"></div>
+        </div>
+    </nav>
+    <div class="banner-section">
+        <header class="banner-section__header">
+            <img src="./assets/images/Images/home-banner1-mobile.jpg" class="img_mobile" alt="" srcset="">
+            <img src="./assets/images/Images/home-banner1-desktop.jpg" class="img_desktop" alt="" srcset="">
+            <div class="banner-section__header__message">
+                <div class="text-message">
+                    <p class="title">Your baby can be a super sleeper</p>
+                    <p class="subtitle">
+                        Lumi’s app-bases sleep coaching and tracking tools will have your baby sleeping better in just 7
+                        days
+                    </p>
+                </div>
+                <div class="generic-btn fade-up">
+                    <span><span class="text">Get started</span></span>
+                </div>
+            </div>
+        </header>
+        <section class="banner-section__banner-container">
+            <div class="image">
+                <img src="./assets/images/Images/how-it-works-desktop.jpg" class="img_desktop" alt="" srcset="">
+                <img src="./assets/images/Images/how-it-works-mobile.jpg" class="img_mobile" srcset="">
+            </div>
+            <div class="texte">
+                <p class="generic-title fade-up">How it works</p>
+                <p class="generic-strong-texte fade-up">Lumi’s A, B, Cs, to better Zzzzs</p>
+                <ul class="listing">
+                    <li class="fade-up">
+                        <div class="letter">a.</div>
+                        <div class="text-explanation"><span class="generic-strong-texte">We coach.</span> Our
+                            Pediatric sleep
+                            experts will take you step-by-step to sleep success</div>
+                    </li>
+                    <li class="fade-up">
+                        <div class="letter">b.</div>
+                        <div class="text-explanation"><span class="generic-strong-texte">You log.</span> Record your
+                            baby’s sleeps directly within the app</div>
+                    </li>
+                    <li class="fade-up">
+                        <div class="letter">c.</div>
+                        <div class="text-explanation"><span class="generic-strong-texte">We analyze.</span> Daily and
+                            weekly sleep insight reports measure your baby’s progress</div>
+                    </li>
+                </ul>
+                <p class="slogant fade-up"><span class="animate-text-in-slogant">Zzzzz</span> your baby sleeps!</p>
+                <div class="generic-btn fade-up">
+                    <span><span class="text">Get started</span></span>
+                </div>
+            </div>
+        </section>
+        <section class="banner-section__banner-container">
+            <div class="image">
+                <img src="./assets/images/Images/our-mission.jpg" alt="" srcset="">
+            </div>
+            <div class="texte">
+                <p class="generic-title fade-up">Our mission</p>
+                <p class="generic-subtitle fade-up">
+                    <span class="generic-strong-texte">We’re on a mission to make it easy for every family to sleep
+                        better</span>. We apply state-of-the-art technology to science-based sleep understanding so that
+                    we can make quality, credible sleep support accessible to everyone – because every baby and their
+                    family deserve better sleep!
+                </p>
+                <div class="generic-btn fade-up">
+                    <span><span class="text">I want to better sleep</span></span>
+                </div>
+            </div>
+        </section>
+        <section class="banner-section__banner-container">
+            <div class="image">
+                <img src="./assets/images/Images/lumi-designed-for.jpg" alt="" srcset="">
+            </div>
+            <div class="texte">
+                <p class="generic-title fade-up">Lumi is designed for</p>
+                <p class="generic-subtitle fade-up">
+                    <span class="generic-strong-texte">Every parent who wants their baby to fall asleep, stay asleep,
+                        and wake
+                        up happy in the morning .</span> Whether you’re struggling with sleep or simply making sure
+                    you’re doing what’s best for your family, we have you covered.
+                </p>
+                <div class="generic-btn fade-up">
+                    <span><span class="text">Get started</span></span>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="question-section">
+        <div class="generic-title fade-up">
+            We’re here to answer your questions
+        </div>
+        <div id="question-spoiler"></div>
+    </div>
 </body>
+
+<script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script src="./assets/js/main-js/main.min.js"></script>
+
+<script type="text/babel">
+    // i use react to make a loop on spoiler and alleviate the HTML
+    class App extends React.Component {
+        render() {
+            const listOfQuestions = [
+                "What is baby sleep training ?",
+                "Does the Lumi Smart Sleep Coach app work ?",
+                "I don’t have time to track manually, is there an alternative ?",
+                "Is sleep training safe for my baby ?",
+                "Are there multiple sleep training methods to choose from ?",
+                "How long does it take for my baby’s sleep to improve ?",
+                "When can I start training my baby to sleep with the Lumi Smart Sleep Coach ?",
+                "Can I grant app access to other people who care for my baby ?​",
+                "Is it too late to sleep train my baby ?",
+                "How long will I have access ?",
+                "Can I cancel my plan ?"
+            ]
+
+            const activeSpoiler = (index) => {
+                //fuction for toggle avtice class on question spoiler
+                const current = $("#question-section__spoiler__" + index)
+
+                $('.question-section__spoiler').each((i, el) => {
+                    if (el !== current[0]) { // we make sur that all question spoiler avec desactived except the spoiler launched
+                        $(el).removeClass("question-section__spoiler--active")
+                    }
+                })
+
+                current.toggleClass("question-section__spoiler--active") // we toggle the active class to activate or desactivate the spoiler on spoiler launched
+            }
+
+            return (
+                listOfQuestions.map((el, i) => (
+                    <div class="question-section__spoiler" id={`question-section__spoiler__` + i}>
+                        <p class="question-section__spoiler--que" onClick={() => activeSpoiler(i)}>
+                            <span>{el}</span>
+                            <svg  id="active_spoiler" width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 0.5L10 9L19 0.5" stroke="#C4C4C4" />
+                            </svg>
+                        </p>
+                        <div class="question-section__spoiler--res">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit corporis modi non. Quas cumque animi
+                            consectetur, aliquam eligendi dolore aut provident odio illum laudantium ducimus voluptates nemo harum
+                            molestias id.
+                        </div>
+                    </div>
+                ))
+            )
+        }
+    }
+    ReactDOM.render(<App />, document.getElementById('question-spoiler'))
+</script>
+
 </html>
