@@ -250,6 +250,7 @@
                 align-items: flex-start;
                 justify-content: space-between;
                 font-size: 1.2em;
+                cursor: pointer;
 
                 #active_spoiler {
                     margin-left: 1em;
@@ -258,7 +259,6 @@
                     display: block;
                     transform: rotate(-180deg);
                     transition: $transition;
-                    cursor: pointer;
                 }
 
                 ::after {

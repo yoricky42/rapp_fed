@@ -608,6 +608,7 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     font-size: 1.2em;
+    cursor: pointer;
   }
   .question-section .question-section__spoiler .question-section__spoiler--que #active_spoiler {
     margin-left: 1em;
@@ -616,7 +617,6 @@ body {
     display: block;
     transform: rotate(-180deg);
     transition: 0.2s;
-    cursor: pointer;
   }
   .question-section .question-section__spoiler .question-section__spoiler--que ::after {
     content: "";
