@@ -2,7 +2,7 @@
 yorickyves42
 
 ## Instalation
-Run : npm i or npm install to install al dependencies
+Run : npm i or npm install to install all dependencies
 
 ## Libraries used :
 
